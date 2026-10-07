@@ -1,5 +1,6 @@
 'use client';
 import {useEffect,useState} from 'react';
+import QuestionResources from './QuestionResources';
 import ExamPractice from './ExamPractice';
 import {tracks,lessonTopic,studyProgress} from '../lib/study.mjs';
 export default function StudyModule({sessions,date,busy,onSave}){
@@ -23,5 +24,5 @@ export default function StudyModule({sessions,date,busy,onSave}){
  {stage===3&&<div><h3>Teste de fixação</h3><p>Responda sem consultar o material. As questões são autorais.</p>{lesson.quiz.map((q,i)=><fieldset key={q.prompt} disabled={submitted}><legend>{i+1}. {q.prompt}</legend>{q.options.map((o,j)=><label className="quizOption" key={o}><input type="radio" name={`${lesson.id}-${i}`} checked={answers[i]===j} onChange={()=>setAnswers({...answers,[i]:j})}/>{o}</label>)}{submitted&&<p>{answers[i]===q.answer?'Correto.':'Reveja este ponto.'} {q.explanation}</p>}</fieldset>)}
  {!submitted?<button disabled={Object.keys(answers).length!==lesson.quiz.length} onClick={()=>setSubmitted(true)}>Conferir respostas</button>:<div role="status"><h3>{score} de {lesson.quiz.length} · {scorePercent}%</h3><p>{scorePercent>=80?'Você atingiu a meta desta aula. Registre e continue na próxima sessão.':'Releia os pontos que errou e tente novamente para consolidar.'}</p><button disabled={busy||saved} onClick={finish}>{saved?'Resultado registrado':busy?'Salvando…':'Registrar sessão no meu histórico'}</button><button className="link" onClick={()=>{setAnswers({});setSubmitted(false)}}>Tentar novamente</button></div>}</div>}
  {stage<3&&<button onClick={()=>setStage(stage+1)}>Próxima etapa →</button>}
- </section>{trackId==='PMPE'&&<ExamPractice date={date} busy={busy} onSave={onSave}/>}<section><h2>Também estude para PMPE Soldado</h2><p>Selecione a trilha PMPE acima para consultar o mapa do edital enviado e estudar as aulas iniciais de cada disciplina.</p><button onClick={()=>{setTrackId("PMPE");setLessonId(null)}}>Abrir trilha PMPE</button></section></div>
+ </section>{trackId==='PMPE'&&<><QuestionResources/><ExamPractice date={date} busy={busy} onSave={onSave}/></>}<section><h2>Também estude para PMPE Soldado</h2><p>Selecione a trilha PMPE acima para consultar o mapa do edital enviado e estudar as aulas iniciais de cada disciplina.</p><button onClick={()=>{setTrackId("PMPE");setLessonId(null)}}>Abrir trilha PMPE</button></section></div>
 }

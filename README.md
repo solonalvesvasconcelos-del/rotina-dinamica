@@ -33,3 +33,7 @@ Fortinet inclui oito aulas, com referências oficiais do FortiOS 7.4 e cinco cen
 A trilha PMPE inclui resolução com caderno PDF local e gabarito informado pelo usuário, correção, filtro de erros e salvamento de resumo em study_sessions. As anuladas são excluídas do percentual de treino. PDF, alternativas marcadas e gabarito permanecem no estado da página, sem upload; somente o resumo é persistido. As fontes localizadas são o concurso AOCP PMPE edital 2023 e um acervo alternativo; os PDFs de prova/gabarito não puderam ser baixados e nenhuma questão histórica foi importada ou inventada. Os quizzes das aulas são autorais.
 
 O edital 2026 fornecido foi comparado ao PDF publicado em arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf; os hashes SHA-256 coincidem. Verificação em 07/10/2026.
+
+### Questões encontradas na internet
+
+A trilha PMPE apresenta 18 referências externas de questões reais da AOCP em listagens Qconcursos filtradas por nível médio, verificadas em 07/10/2026. Há busca por assunto/prova e filtro de disciplina (Português, Lógica, Informática e Constitucional). A seleção exclui tópicos sem relação clara com o programa, mas não constitui prova PMPE nem cobre todo o edital. Enunciados, comentários e gabaritos não são reproduzidos; a resolução ocorre na fonte, sujeita a cadastro e limites do provedor. Origem, ID, ano, prova e classificação são salvos no catálogo. Não foi atribuído gabarito sem verificação.
