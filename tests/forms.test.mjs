@@ -11,3 +11,6 @@ test('valores respeitam limites e tipos do banco',()=>{
  assert.equal(prepareRow('uber_sessions',{trips:2,gross_earnings:10.5}).gross_earnings,10.5);
  assert.equal(prepareRow('routine_settings',{gym_weekly_target:14}).gym_weekly_target,14);
 });
+test('horários Uber são normalizados e exigem intervalo positivo',()=>{
+ const row=prepareRow('uber_sessions',{started_at:'2026-10-07T12:00:00Z',ended_at:'2026-10-07T13:00:00Z'});assert.equal(row.started_at,'2026-10-07T12:00:00.000Z');assert.throws(()=>prepareRow('uber_sessions',{started_at:'2026-10-07T12:00:00Z'}));assert.throws(()=>prepareRow('uber_sessions',{started_at:'2026-10-07T12:00:00Z',ended_at:'2026-10-07T11:00:00Z'}));
+});

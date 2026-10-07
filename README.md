@@ -37,3 +37,17 @@ O edital 2026 fornecido foi comparado ao PDF publicado em arquivos-site.institut
 ### Questões encontradas na internet
 
 A trilha PMPE apresenta 18 referências externas de questões reais da AOCP em listagens Qconcursos filtradas por nível médio, verificadas em 07/10/2026. Há busca por assunto/prova e filtro de disciplina (Português, Lógica, Informática e Constitucional). A seleção exclui tópicos sem relação clara com o programa, mas não constitui prova PMPE nem cobre todo o edital. Enunciados, comentários e gabaritos não são reproduzidos; a resolução ocorre na fonte, sujeita a cadastro e limites do provedor. Origem, ID, ano, prova e classificação são salvos no catálogo. Não foi atribuído gabarito sem verificação.
+
+## Finanças
+
+A área Finanças reúne Airbnb (por imóvel), Uber, Inorpel e despesas pessoais. Distingue lançamentos pendentes de recebidos/pagos, usa a data efetiva para o fluxo mensal, mostra vencidos de meses anteriores e permite editar, excluir com confirmação e exportar CSV. Valores são calculados em centavos. O resultado é o movimento registrado, não um saldo bancário nem um cálculo fiscal completo.
+
+As receitas Uber vêm de `uber_sessions`, sem criar cópias no livro financeiro; receitas Uber manuais são bloqueadas também no banco. Custos precisam ser informados. Horários opcionais de início/fim na área Uber permitem calcular receita bruta por hora somente para sessões com duração conhecida. Para Airbnb, use o valor bruto com taxas lançadas separadamente ou o líquido sem repetir as taxas descontadas.
+
+Reservas usam aportes e retiradas: não contam como receita/despesa operacional. Aportes reduzem o livre do mês e retiradas aumentam; o saldo reservado acumula entre meses. O banco bloqueia movimentos, edições ou exclusões que deixariam o saldo total da reserva negativo. Não são transferências bancárias reais. A identificação do imóvel é texto livre; use nomes consistentes.
+
+### Ativação no Supabase
+
+Execute somente `supabase/migrations/202610070002_finance.sql` uma vez no SQL Editor do projeto existente. Há uma cópia para download em `/docs/finance.sql`. Não execute a migração `initial` neste banco. O SQL cria duas tabelas com RLS por usuário, grants para authenticated, bloqueio de anon, restrições de valores e um trigger de saldo de reserva. Não altera as oito tabelas existentes.
+
+Antes da ativação, a área exibe indisponibilidade e oferece nova tentativa, sem impedir Estudos ou as demais áreas. Em 07/10/2026 as duas tabelas não existiam no Supabase (HTTP 404/PGRST205); nenhuma migração foi aplicada ao banco real nesta sessão. O SQL foi executado em PostgreSQL local via PGlite com papéis authenticated/anon e auth.uid simulado, validando isolamento, constraints, vínculo por proprietário, movimentos de reserva e remoção em cascata. O navegador foi validado com API Supabase simulada. Após ativar, validar lançamentos reais em uma sessão autenticada.
