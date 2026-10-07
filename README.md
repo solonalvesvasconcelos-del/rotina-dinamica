@@ -25,3 +25,11 @@ Testes do planejador executáveis sem dependências. Build e login remoto devem 
 ## Estudos guiados
 
 A área Estudos inclui trilhas introdutórias com explicações, prática, cartões de memória e quiz autoral. Fortinet é a trilha inicial. Há também material básico de inglês e redes. O modo foco usa um cronômetro de 25 minutos. O resultado é salvo na tabela `study_sessions` existente, com identificador de aula em `topic`, nota e número de questões; não exige migração de banco. A próxima aula considera a data selecionada e a última nota; a meta é 80% e a revisão é sugerida após três dias. O material é inicial e não cobre integralmente uma certificação. PMPE Soldado inclui o mapa do PDF enviado (Edital 001/2026) e sete aulas iniciais, uma por disciplina e uma de redação. A fonte é o arquivo fornecido pelo usuário, disponível no módulo; sua autenticidade não foi validada de forma independente. A trilha usa subject Other e identificadores próprios em topic, compatíveis com o banco existente. O material inicial não cobre integralmente todos os tópicos do edital.
+
+### Aprofundamento e provas anteriores
+
+Fortinet inclui oito aulas, com referências oficiais do FortiOS 7.4 e cinco cenários adicionais: roteamento, sessões, SNAT, inspeção TLS e diagnóstico. O nome NSE4 é mantido como categoria do banco; consulte o Training Institute para currículo, versão e denominação atuais do exame.
+
+A trilha PMPE inclui resolução com caderno PDF local e gabarito informado pelo usuário, correção, filtro de erros e salvamento de resumo em study_sessions. As anuladas são excluídas do percentual de treino. PDF, alternativas marcadas e gabarito permanecem no estado da página, sem upload; somente o resumo é persistido. As fontes localizadas são o concurso AOCP PMPE edital 2023 e um acervo alternativo; os PDFs de prova/gabarito não puderam ser baixados e nenhuma questão histórica foi importada ou inventada. Os quizzes das aulas são autorais.
+
+O edital 2026 fornecido foi comparado ao PDF publicado em arquivos-site.institutoaocp.org.br/publicacoes/2900b54e-fae0-462e-8a77-58784523dfa0.pdf; os hashes SHA-256 coincidem. Verificação em 07/10/2026.

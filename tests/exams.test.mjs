@@ -1,0 +1,3 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {parseAnswerKey,gradeExam} from '../lib/exams.mjs';
+test('aceita gabarito e anuladas sem sobrescrever duplicatas',()=>{assert.deepEqual(parseAnswerKey('1 A\n2: c\n3 ANULADA'),{1:'A',2:'C',3:'X'});for(const s of ['1 A\n1 B','0 A','201 A','1 F','texto',''])assert.throws(()=>parseAnswerKey(s));});
+test('corrige erros e brancos, excluindo anuladas',()=>{const r=gradeExam({1:'A',2:'B',3:'X',4:'C'},{1:'A',2:'D',3:'B'});assert.equal(r.total,3);assert.equal(r.correct,1);assert.deepEqual(r.wrong,['2']);assert.deepEqual(r.blank,['4']);assert.equal(r.percent,33);assert.equal(gradeExam({1:'X'},{}).total,0);});
