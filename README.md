@@ -51,3 +51,7 @@ Reservas usam aportes e retiradas: não contam como receita/despesa operacional.
 Execute somente `supabase/migrations/202610070002_finance.sql` uma vez no SQL Editor do projeto existente. Há uma cópia para download em `/docs/finance.sql`. Não execute a migração `initial` neste banco. O SQL cria duas tabelas com RLS por usuário, grants para authenticated, bloqueio de anon, restrições de valores e um trigger de saldo de reserva. Não altera as oito tabelas existentes.
 
 Antes da ativação, a área exibe indisponibilidade e oferece nova tentativa, sem impedir Estudos ou as demais áreas. Em 07/10/2026 as duas tabelas não existiam no Supabase (HTTP 404/PGRST205); nenhuma migração foi aplicada ao banco real nesta sessão. O SQL foi executado em PostgreSQL local via PGlite com papéis authenticated/anon e auth.uid simulado, validando isolamento, constraints, vínculo por proprietário, movimentos de reserva e remoção em cascata. O navegador foi validado com API Supabase simulada. Após ativar, validar lançamentos reais em uma sessão autenticada.
+
+## Hospedagem estática no HTV
+
+Execute `npm run build:static` em um computador atual para gerar `out/`. O HTV com Termux precisa apenas servir esses arquivos via Python; não precisa executar Node.js. Veja [transferência por SSH, teste local e limites do Android antigo](docs/hospedagem-htv.md). O build padrão para Vercel continua disponível.
